@@ -1,13 +1,16 @@
 <?php
 
-function nameCheck($name)
+function checkName($name)
 {
     return trim($name) !== '';
 }
 
 
-var_dump(nameCheck('   '));
-var_dump(nameCheck(null));
+echo $_POST['name'];
+print_r($_POST);
+if(!checkName($_POST['name'])){
+    echo 'invalid name';
+}
 
 
 //header('Location: /register');

@@ -1,9 +1,3 @@
-<?php
-if ($_POST){
-    header('Location: checkReg.php');
-}
-?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -16,7 +10,7 @@ if ($_POST){
 </head>
 <body class="" style="background-image: linear-gradient(to right, #ffb6b6, #a9a9ff);">
 <div class="container mx-auto justify-center flex mt-[8rem]">
-    <form method="post" class="w-1/4 border border-gray-500 bg-white p-5 pt-10 rounded-lg">
+    <form method="post" class="w-1/4 border border-gray-500 bg-white p-5 pt-10 rounded-lg" action="checkReg.php">
         <div class="mb-3">
             <label for="name">Name: </label>
             <input class="form-control" type="text" name="name" id="name" placeholder="name">
