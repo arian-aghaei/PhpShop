@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "serve": "php -S 0.0.0.0:8585",
+    "start": "tailwindcss -i ./public/css/style.css -o ./public/css/output.css --watch",
+    "build": "tailwindcss -i ./public/css/style.css -o ./public/css/output.css --m"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.6"
+  }
+}
