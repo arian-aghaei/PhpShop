@@ -19,6 +19,8 @@ function checkEmail($email)
  */
 function checkUsername($username,$conn)
 {
+    if(trim($username) == '')
+        return false;
     $sql = "SELECT username from users where username = '$username'";
     $result = $conn->query($sql);
     return !$result->num_rows;
@@ -67,6 +69,3 @@ VALUES('{$_POST['name']}', '{$_POST['username']}', '{$_POST['email']}', '{$_POST
     setcookie('errors', json_encode($invalidInputs), time() + 3);
     header('location: ./register');
 }
-
-
-//header('Location: /register');

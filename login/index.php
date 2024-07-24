@@ -10,7 +10,7 @@
 </head>
 <body class="" style="background-image: linear-gradient(to right, #a9a9ff, #ffb6b6);">
     <div class="container mx-auto justify-center flex mt-[8rem]">
-        <form method="post" class="w-1/4 border border-gray-500 bg-white p-5 pt-10 rounded-lg">
+        <form method="post" class="w-1/4 border border-gray-500 bg-white p-5 pt-10 rounded-lg" action="./checkLog.php">
             <div class="mb-3">
                 <label for="username">Username: </label>
                 <input class="form-control" type="text" name="username" placeholder="username">
@@ -28,5 +28,19 @@
             </div>
         </form>
     </div>
+    
+    <?php
+    if ($_COOKIE['errors']):
+        ?>
+        <script>
+            const errors = <?=$_COOKIE['errors']?>;
+            Object.keys(errors).forEach(item => {
+                document.getElementsByName(item)[0].classList.add('!ring-red-500');
+            });
+        </script>
+
+    <?php
+    endif;
+    ?>
 </body>
 </html>
