@@ -37,6 +37,9 @@ else if(!checkPass($_POST['username'], $_POST['password'], $conn)){
 }
 else{
     session_start();
-    $_SESSION['user'] = getUser($_POST['username'], $conn)[0];
+    $_SESSION['user'] = [
+        'user'=>getUser($_POST['username'], $conn)[0],
+        'time' => time()+ 10 * 60
+    ];
     header('Location: .');
 }

@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+if($_SESSION['user']['time'] > time())
+    header('Location: ../.');
+?>
+
 <!doctype html>
 <html lang="en">
 <head>

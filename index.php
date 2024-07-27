@@ -3,10 +3,13 @@ session_start();
 
 function profileSection() : string
 {
-    if ($_SESSION['user'])
+    if ($_SESSION['user']['time'] > time())
         return '<div class="ml-auto my-auto flex gap-3">
-            <a class="my-auto" href="account">' . $_SESSION['user']['name'] . '</a>
-            <img class="w-8 md:w-10 rounded-[50%]" src="' . ($_SESSION['user']['profile'] ?? 'profile.png') . '" alt="">
+            <form class="my-auto" action="logout.php" method="post">
+                <button class="hover:underline hover:text-blue-800" >log out</button>
+            </form>
+            <a class="my-auto hover:underline hover:text-blue-800" href="account">' . $_SESSION['user']['user']['name'] . '</a>
+            <img class="w-8 md:w-10 rounded-[50%]" src="' . ($_SESSION['user']['user']['profile'] ?? 'profile.svg') . '" alt="">
         </div>';
     else
         return '<div class="ml-auto my-auto gap-3 flex">
@@ -24,7 +27,7 @@ function profileSection() : string
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Home</title>
     <link rel="stylesheet" href="/public/css/output.css">
 </head>
 <body class="bg-gray-100">
