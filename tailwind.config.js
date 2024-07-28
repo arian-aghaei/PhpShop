@@ -4,6 +4,7 @@ module.exports = {
     "./login/**/*.{html,js,php}",
     "./register/**/*.{html,js,php}",
     "./account/**/*.{html,js,php}",
+    "./edituser/**/*.{html,js,php}",
     "./index.php",
   ],
   theme: {

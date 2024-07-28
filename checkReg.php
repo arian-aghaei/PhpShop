@@ -59,8 +59,9 @@ if(!checkPassword($_POST['password']))
     $invalidInputs['password'] = false;
 
 if (count($invalidInputs)===0){
+    $pass = md5($_POST['password']);
     $sql = "INSERT into users(name, username, email, password) 
-VALUES('{$_POST['name']}', '{$_POST['username']}', '{$_POST['email']}', '{$_POST['password']}')";
+VALUES('{$_POST['name']}', '{$_POST['username']}', '{$_POST['email']}', '{$pass}')";
     if(!$conn->query($sql))
         die('failed to create data');
     setcookie('registered' , 1, time()+3);

@@ -9,7 +9,7 @@ function profileSection() : string
                 <button class="hover:underline hover:text-blue-800" >log out</button>
             </form>
             <a class="my-auto hover:underline hover:text-blue-800" href="account">' . $_SESSION['user']['user']['name'] . '</a>
-            <img class="w-8 md:w-10 rounded-[50%]" src="' . ($_SESSION['user']['user']['profile'] ?? 'profile.svg') . '" alt="">
+            <img class="w-8 md:w-10 rounded-[50%]" src="' . ($_SESSION['user']['user']['profile'] ? './public/uploads/profile/'.$_SESSION['user']['user']['profile']: 'profile.svg') . '" alt="">
         </div>';
     else
         return '<div class="ml-auto my-auto gap-3 flex">

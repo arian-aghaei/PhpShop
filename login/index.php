@@ -12,7 +12,7 @@ if($_SESSION['user']['time'] > time())
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Log In</title>
     <link rel="stylesheet" href="/public/css/output.css">
 </head>
 <body class="" style="background-image: linear-gradient(to right, #a9a9ff, #ffb6b6);">

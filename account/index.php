@@ -17,20 +17,23 @@ if($_SESSION['user']['time'] > time()):
 <div class="container mx-auto">
     <div class="md:flex  mt-10 ">
         <div class="md:basis-1/2 flex flex-col items-center mx-3 md:items-start">
-            <div class="flex flex-col md:flex-row p-4 items-center md:items-start shadow-lg bg-white m-3 mt-0 rounded-lg w-full">
-                <img class="w-16 md:w-40 rounded-[50%]" src=<?= $_SESSION['user']['profile'] ?? "./profile.svg" ?> alt="profile">
-                <a class="account-link md:my-auto md:ps-5"
-                   href="">Change Profile Photo</a>
+            <div class="flex flex-col md:flex-row p-4 items-center md:items-start shadow-xl bg-white m-3 mt-0 rounded-lg w-full">
+                <img class="w-16 md:w-40 rounded-[50%]" src=<?= $_SESSION['user']['user']['profile'] ? './public/uploads/profile/'.$_SESSION['user']['user']['profile']: 'profile.svg' ?> alt="profile">
+                <div class="flex-col my-auto text-center md:text-start">
+                    <div class="md:my-auto pb-2 text-2xl md:ps-5"><?= $_SESSION['user']['user']['name'] ?></div>
+                    <div class="md:my-auto md:ps-5 text-gray-600"><?= $_SESSION['user']['user']['username'] ?></div>
+                </div>
             </div>
-            <div class="md:flex text-center md:text-left shadow-lg m-3 mt-0 rounded-lg bg-white w-full p-10 text-xs md:text-base">
+            <div class="md:flex text-center md:text-left shadow-xl m-3 mt-0 rounded-lg bg-white w-full p-10 text-xs md:text-base">
                 This place could be a text box for showing your description or changing it but not this time LOL!
             </div>
         </div>
-        <div class="md:basis-1/2 flex flex-col items-center md:items-start p-10 bg-white rounded-lg m-3 mt-0 shadow-lg">
-            <a class="account-link my-3" href="">Change Name</a>
-            <a class="account-link my-3" href="">Change Username</a>
-            <a class="account-link my-3" href="">Change Email</a>
-            <a class="account-link my-3" href="">Change Password</a>
+        <div class="md:basis-1/2 flex flex-col items-center md:items-start p-10 bg-white rounded-lg m-3 mt-0 shadow-xl">
+            <a class="account-link my-3" href="./edituser">Change Name</a>
+            <a class="account-link my-3" href="./edituser">Change Username</a>
+            <a class="account-link my-3" href="./edituser">Change Email</a>
+            <a class="account-link my-3" href="./edituser">Change Password</a>
+            <a class="account-link my-3" href="./edituser">Change Profile Photo</a>
             <form action="../logout.php" method="post">
                 <button class="account-link my-3">Log Out</button>
             </form>

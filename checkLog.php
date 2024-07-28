@@ -30,7 +30,7 @@ if(!checkUser($_POST['username'], $conn)){
     setcookie('errors', json_encode($invalidInputs), time() + 3);
     header('Location: ./login');
 }
-else if(!checkPass($_POST['username'], $_POST['password'], $conn)){
+else if(!checkPass($_POST['username'], md5($_POST['password']), $conn)){
     $invalidInputs['password'] = false;
     setcookie('errors', json_encode($invalidInputs), time() + 3);
     header('Location: ./login');
@@ -39,7 +39,7 @@ else{
     session_start();
     $_SESSION['user'] = [
         'user'=>getUser($_POST['username'], $conn)[0],
-        'time' => time()+ 10 * 60
+        'time' => time()+ 3600
     ];
     header('Location: .');
 }
