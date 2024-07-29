@@ -1,6 +1,23 @@
 <?php
 session_start();
+require_once '../server/index.php';
+
+function products($res)
+{
+    for($i=0; $i<count($res); $i++){
+        echo '<div class="flex w-full justify-between mb-3">
+                        <p>'.$res[$i]["productid"].'</p>
+                        <p>'.$res[$i]["COUNT(productid)"].'</p>
+                    </div>';
+    }
+}
+
 if($_SESSION['user']['time'] > time()):
+    $sql = 'SELECT productid, COUNT(productid) FROM `orders`
+WHERE userid='.$_SESSION['user']['user']['id'].'
+GROUP BY (productid);';
+    $result = $conn->query($sql);
+    $res = $result->fetch_all(1);
 ?>
 
 <!doctype html>
@@ -25,7 +42,9 @@ if($_SESSION['user']['time'] > time()):
                 </div>
             </div>
             <div class="md:flex text-center md:text-left shadow-xl m-3 mt-0 rounded-lg bg-white w-full p-10 text-xs md:text-base">
-                This place could be a text box for showing your description or changing it but not this time LOL!
+                <div class="w-full">
+                    <?= products($res) ?>
+                </div>
             </div>
         </div>
         <div class="md:basis-1/2 flex flex-col items-center md:items-start p-10 bg-white rounded-lg m-3 mt-0 shadow-xl">
