@@ -2,11 +2,14 @@
 session_start();
 require_once '../server/index.php';
 
-function products($res)
+function products($res, $conn)
 {
     for($i=0; $i<count($res); $i++){
+        $sql = 'select name from products where id = '. $res[$i]['productid'] .';';
+        $result = $conn->query($sql);
+        $rs = $result->fetch_all(1);
         echo '<div class="flex w-full justify-between mb-3">
-                        <p>'.$res[$i]["productid"].'</p>
+                        <p>'.$rs[0]['name'].'</p>
                         <p>'.$res[$i]["COUNT(productid)"].'</p>
                     </div>';
     }
@@ -43,7 +46,11 @@ GROUP BY (productid);';
             </div>
             <div class="md:flex text-center md:text-left shadow-xl m-3 mt-0 rounded-lg bg-white w-full p-10 text-xs md:text-base">
                 <div class="w-full">
-                    <?= products($res) ?>
+                    <div class="flex w-full justify-between mb-3">
+                        <p>Product names</p>
+                        <p>Count</p>
+                    </div>
+                    <?= products($res, $conn) ?>
                 </div>
             </div>
         </div>

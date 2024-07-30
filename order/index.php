@@ -1,12 +1,5 @@
-<?php
-global $conn;
-session_start();
-require_once '../server/index.php';
 
-if($_SESSION['user']['time'] > time()):
-    $sql = 'insert into orders (userid, productid, cost) values ('. $_SESSION['user']['user']['id'] .', '.$_POST['id'].', '.$_SESSION['posts'][$_POST['id']-1]['price'].');';
-    $result = $conn->query($sql);
-?>
+
 
 <!doctype html>
 <html lang="en">
@@ -18,13 +11,7 @@ if($_SESSION['user']['time'] > time()):
     <title>Order</title>
 </head>
 <body>
-    <div>Product Added to your Account Successfully!</div>
+<div>Product Added to your Account Successfully!</div>
 
 </body>
 </html>
-
-<?php
-else:
-    header('Location: ./login');
-endif;
-?>

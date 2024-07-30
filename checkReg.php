@@ -2,7 +2,7 @@
 
 require_once 'server/index.php';
 
-function checkName($name)
+function checkName($name): bool
 {
     return trim($name) !== '';
 }

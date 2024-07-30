@@ -4,7 +4,7 @@ require_once 'server/index.php';
 
 function profileSection(): string
 {
-    if ($_SESSION['user'] && $_SESSION['user']['time'] > time())
+    if (isset($_SESSION['user']) && $_SESSION['user']['time'] > time())
         return '<div class="ml-auto my-auto flex gap-3">
             <form class="my-auto" action="logout.php" method="post">
                 <button class="hover:underline hover:text-blue-800" >log out</button>
@@ -21,7 +21,7 @@ function profileSection(): string
 
 function allPosts($conn)
 {
-    $sql = "SELECT * from products";
+    $sql = "SELECT * from products where count>0";
     $result = $conn->query($sql);
     return $result->fetch_all(1);
 }
@@ -35,9 +35,9 @@ function posts()
         $img = $products[$id-1]['picture'] ?? 'image.jpeg';
         echo '<div class="bg-white rounded-lg">
             <img class="mx-auto my-5" src="'. $img .'" alt="image">
-            <form method="post" class="flex-row flex mb-5 mx-8" action="order">
+            <form method="post" class="flex-row flex mb-5 mx-8" action="buying.php">
                 <span class="my-auto">'. $products[$id-1]['name'] .'</span>
-                <input type="hidden" name="id" value="'. $id .'" >
+                <input type="hidden" name="id" value="'. $products[$id-1]['id'] .'" >
                 <button class="ml-auto justify-end rounded-lg px-3 py-1 text-white bg-black hover:text-gray-400"
                         type="submit">buy
                 </button>
@@ -69,7 +69,7 @@ function posts()
     <span class="visible md:hidden font-bold my-auto">phpShop</span>
     <?= profileSection() ?>
 </header>
-<div class="container mx-auto mt-6">
+<div class="container mx-auto my-6">
     <div class="grid grid-cols-4 gap-6">
         <?= posts() ?>
     </div>
